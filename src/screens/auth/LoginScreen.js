@@ -18,26 +18,32 @@ export default function LoginScreen({ navigation }) {
       username: 'opsmanager',
       password: 'ops123',
       role: 'OPS_MANAGER'
+    },
+    {
+      username: 'officer1',
+      password: 'officer123',
+      role: 'LOAN_OFFICER'
     }
   ];
 
-  const handleLogin = () => {
-    const user = validUsers.find(u => u.username === username && u.password === password);
-    
-    if (user) {
-      // Store user info in context
-      setCurrentUser(user);
-      
-      // Navigate based on role
-      if (user.role === 'IT_ADMIN') {
-        navigation.navigate('Dashboard');
+ const handleLogin = () => {
+      const user = validUsers.find(u => u.username === username && u.password === password);
+
+      if (user) {
+        setCurrentUser(user);
+
+        if (user.role === 'IT_ADMIN') {
+            navigation.navigate('Dashboard');
+          } else if (user.role === 'OPS_MANAGER') {
+            navigation.navigate('OpsDashboard');
+          } else if (user.role === 'LOAN_OFFICER') {
+            navigation.navigate('LoanOfficerDashboard');
+          }
       } else {
-        navigation.navigate('OpsDashboard');
+        alert('Invalid credentials!');
       }
-    } else {
-      alert('Invalid credentials!');
-    }
   };
+
 
   return (
     <View style={styles.container}>

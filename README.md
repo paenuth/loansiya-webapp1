@@ -1,4 +1,4 @@
-# Setup Instructions for LoanSiya All-in-1 Web App
+# Setup Instructions for LoanSiya IT Admin Web App
 
 ## Installation Steps
 
@@ -14,7 +14,7 @@ npm install -g expo-cli
 
 ### 3. Navigate into the project folder
 ```bash
-cd loansiya-webapp1
+cd loansiya-it-admin
 ```
 
 ### 4. Install web support dependencies

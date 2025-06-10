@@ -7,6 +7,9 @@ import LoginScreen from './screens/auth/LoginScreen';
 import ForgotPasswordScreen from './screens/auth/ForgotPasswordScreen';
 import ITAdminDashboard from './screens/itadmin/DashboardScreen';
 import OpsDashboard from './screens/ops/DashboardScreen';
+import LoanOfficerDashboard from './screens/loanofficer/DashboardScreen';
+import ClientListScreen from './screens/loanofficer/ClientListScreen';
+import ClientProfileScreen from './screens/loanofficer/ClientProfileScreen';
 import UserManagementScreen from './screens/itadmin/UserManagementScreen';
 import AddEditUserScreen from './screens/itadmin/AddEditUserScreen';
 
@@ -55,6 +58,10 @@ export default function App() {
             <Stack.Screen name="OpsDashboard" component={OpsDashboard} />
             <Stack.Screen name="UserManagement" component={UserManagementScreen} />
             <Stack.Screen name="AddEditUser" component={AddEditUserScreen} />
+            <Stack.Screen name="LoanOfficerDashboard" component={LoanOfficerDashboard} />
+            <Stack.Screen name="ClientList" component={ClientListScreen} />
+            <Stack.Screen name="ClientProfile" component={ClientProfileScreen} />
+
           </Stack.Navigator>
         </NavigationContainer>
       </UsersContext.Provider>
