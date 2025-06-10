@@ -1,4 +1,4 @@
-# Setup Instructions for LoanSiya IT Admin Web App
+# Setup Instructions for LoanSiya All-in-1 Web App
 
 ## Installation Steps
 
