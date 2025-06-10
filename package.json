@@ -1,0 +1,12 @@
+{
+  "name": "loansiya-webapp-root",
+  "private": true,
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "cd src && expo start",
+    "android": "cd src && expo start --android",
+    "ios": "cd src && expo start --ios",
+    "web": "cd src && expo start --web"
+  }
+}

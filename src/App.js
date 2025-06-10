@@ -1,0 +1,63 @@
+import React, { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+// Screens
+import LoginScreen from './screens/auth/LoginScreen';
+import ForgotPasswordScreen from './screens/auth/ForgotPasswordScreen';
+import ITAdminDashboard from './screens/itadmin/DashboardScreen';
+import OpsDashboard from './screens/ops/DashboardScreen';
+import UserManagementScreen from './screens/itadmin/UserManagementScreen';
+import AddEditUserScreen from './screens/itadmin/AddEditUserScreen';
+
+// Contexts
+import { AuthContext } from './contexts/AuthContext';
+import { UsersContext } from './contexts/UsersContext';
+
+const Stack = createNativeStackNavigator();
+
+export default function App() {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [users, setUsers] = useState([
+    { username: 'officer1', fullName: 'Maron Brown', role: 'Officer', status: 'Active' },
+    { username: 'officer2', fullName: 'Vince Black', role: 'Officer', status: 'Active' },
+    { username: 'officer3', fullName: 'Hane White', role: 'Ops', status: 'Active' },
+    { username: 'officer4', fullName: 'Monke G', role: 'Officer', status: 'Disabled' },
+  ]);
+
+  const addUser = (newUser) => {
+    setUsers(currentUsers => [...currentUsers, newUser]);
+  };
+
+  const updateUser = (updatedUser) => {
+    setUsers(currentUsers =>
+      currentUsers.map(user =>
+        user.username === updatedUser.username ? updatedUser : user
+      )
+    );
+  };
+
+  return (
+    <AuthContext.Provider value={{
+      currentUser,
+      setCurrentUser,
+      resetPassword: async (username, newPassword) => {
+        // In a real app, this would make an API call
+        return new Promise(resolve => setTimeout(() => resolve({ success: true }), 1000));
+      }
+    }}>
+      <UsersContext.Provider value={{ users, addUser, updateUser }}>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+            <Stack.Screen name="Dashboard" component={ITAdminDashboard} />
+            <Stack.Screen name="OpsDashboard" component={OpsDashboard} />
+            <Stack.Screen name="UserManagement" component={UserManagementScreen} />
+            <Stack.Screen name="AddEditUser" component={AddEditUserScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </UsersContext.Provider>
+    </AuthContext.Provider>
+  );
+}
