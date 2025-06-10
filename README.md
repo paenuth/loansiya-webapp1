@@ -14,7 +14,7 @@ npm install -g expo-cli
 
 ### 3. Navigate into the project folder
 ```bash
-cd loansiya-it-admin
+cd loansiya-webapp1
 ```
 
 ### 4. Install web support dependencies
